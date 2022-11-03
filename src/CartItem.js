@@ -2,15 +2,15 @@ import React from 'react';
 
 class CartItem extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            title: 'Smart Phone',
-            price: 9999,
-            qty: 1,
-            img: ' '
-        }
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         title: 'Smart Phone',
+    //         price: 9999,
+    //         qty: 1,
+    //         img: ' '
+    //     }
+    // }
 
     // testing = () =>  {
     //     const promise = new Promise((resolve, reject) => {
@@ -35,25 +35,25 @@ class CartItem extends React.Component {
         //     qty: this.state.qty + 1
         // })
         // setState form 2
-        this.setState((prevState)=>{
-            return {
-                qty: prevState.qty + 1,
-                price: prevState.price + (prevState.price / prevState.qty)
-            }
-        })
+        // this.setState((prevState)=>{
+        //     return {
+        //         qty: prevState.qty + 1,
+        //         price: prevState.price + (prevState.price / prevState.qty)
+        //     }
+        // })
     }
 
     decreaseQuantity = () => {
-        if(this.state.qty >= 2) {
-            this.setState({
-                qty: this.state.qty - 1,
-                price: this.state.price - (this.state.price / this.state.qty)
-            })
-        }
+        // if(this.state.qty >= 2) {
+        //     this.setState({
+        //         qty: this.state.qty - 1,
+        //         price: this.state.price - (this.state.price / this.state.qty)
+        //     })
+        // }
     }
 
     render() {
-        const { title, price, qty } = this.state;    // object destructoring
+        const { title, price, qty } = this.props.product;    // object destructoring
         return (
             <div className='cart-item'>
                 <div className='left-block'>
