@@ -32,6 +32,34 @@ class Cart extends React.Component {
         }
     }
 
+    handleIncreaseQuantity = (product) => {
+        console.log('hey increase the qty of the product', product);
+        const {products} = this.state;
+        const index = products.indexOf(product);
+        const prevQty = products[index].qty;
+        const prevPrice = products[index].price;
+        products[index].qty = prevQty + 1;
+        products[index].price =  prevPrice + (prevPrice / prevQty);
+        this.setState({
+            products
+        })
+    }
+
+    handleDecreaseQuantity = (product) => {
+        console.log('hey decrease the qty of the product', product);
+        const {products} = this.state;
+        const index = products.indexOf(product);
+        const prevQty = products[index].qty;
+        const prevPrice = products[index].price;
+        if(prevQty >= 2) {
+            products[index].qty = prevQty - 1;
+            products[index].price =  prevPrice - (prevPrice / prevQty);
+        }
+        this.setState({
+            products
+        })
+    }
+
     render() {
         const {products} = this.state;
         return (
@@ -41,7 +69,12 @@ class Cart extends React.Component {
                 <CartItem />
                 <CartItem /> */}
                 {products.map((product)=>{
-                    return <CartItem product={product} key={product.id} />
+                    return <CartItem 
+                            product={product} 
+                            key={product.id}
+                            onIncreaseQuantity={this.handleIncreaseQuantity}
+                            onDecreaseQuantity={this.handleDecreaseQuantity}
+                            />
                 })}
             </div>
         )
